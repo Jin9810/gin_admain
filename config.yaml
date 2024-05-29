@@ -1,0 +1,10 @@
+system:
+  db-type: mysql
+mysql:
+  config: charset=utf8mb4&parseTime=True&loc=Local
+  port: "3306"
+  db-name: gva
+  username: root
+  password: ""
+  host: 127.0.0.1
+  engine: ""
