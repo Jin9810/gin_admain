@@ -2,8 +2,8 @@ package api
 
 import (
 	"gin-vue-admin-STL/entity"
-	"gin-vue-admin-STL/model/system/request"
-	"gin-vue-admin-STL/model/system/response"
+	"gin-vue-admin-STL/model/request"
+	"gin-vue-admin-STL/model/response"
 	"gin-vue-admin-STL/service"
 	"github.com/gin-gonic/gin"
 )
@@ -46,4 +46,21 @@ func (b *BaseApi) ChangePassword(c *gin.Context) {
 		response.FailWithMessage("修改失败，原密码不正确", c)
 	}
 	response.OkWithMessage("修改成功", c)
+}
+
+// DeleteUser
+// @Router /user/deleteUser
+// 删除用户
+func (b *BaseApi) DeleteUser(c *gin.Context) {
+	var id request.GetById
+	err := c.ShouldBindJSON(&id)
+	if err != nil {
+		response.FailWithMessage(err.Error(), c)
+		return
+	}
+	err = service.ServiceGroupApp.DeleteUser(id.ID)
+	if err != nil {
+		response.FailWithMessage("删除失败", c)
+	}
+	response.OkWithMessage("删除成功", c)
 }

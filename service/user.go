@@ -29,3 +29,12 @@ func (u *UserService) ChangePassWord(entityUser *entity.User, newPassWord string
 	err = global.GVA_DB.Save(&user).Error
 	return &user, err
 }
+
+func (u *UserService) DeleteUser(id uint) (err error) {
+	return global.GVA_DB.Transaction(func(tx *gorm.DB) error {
+		if err := tx.Where("id = ?", id).Delete(&entity.User{}).Error; err != nil {
+			return err
+		}
+		return nil
+	})
+}
