@@ -16,8 +16,9 @@ type Login struct {
 	Password string `json:"password"` // 密码
 }
 
-// ChangePasswordReq 修改密码
-type ChangePasswordReq struct {
+// ChangePassword 修改密码
+type ChangePassword struct {
+	Phone       string `json:"phone"`
 	Password    string `json:"password"`    // 密码
 	NewPassword string `json:"newPassword"` // 新密码
 }
