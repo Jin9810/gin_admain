@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"gin-vue-admin-STL/core"
 	"gin-vue-admin-STL/global"
 	"gin-vue-admin-STL/initialize"
@@ -15,5 +16,7 @@ func main() {
 		db, _ := global.GVA_DB.DB()
 		defer db.Close()
 	}
-
+	if err := core.RunWindowsServer(); err != nil {
+		fmt.Printf("error: %s", err.Error())
+	}
 }

@@ -2,6 +2,8 @@ package initialize
 
 import (
 	"gin-vue-admin-STL/global"
+	"gorm.io/gorm/logger"
+
 	// 短划线表名不使用这个包的任何函数和变量
 	_ "github.com/go-sql-driver/mysql"
 	"gorm.io/driver/mysql"
@@ -19,7 +21,9 @@ func GormMysql() *gorm.DB {
 	}
 
 	// todo: 配置项没设置
-	if db, err := gorm.Open(mysql.New(mysqlConfig), &gorm.Config{}); err != nil {
+	if db, err := gorm.Open(mysql.New(mysqlConfig), &gorm.Config{
+		Logger: logger.Default.LogMode(logger.Info),
+	}); err != nil {
 		return nil
 	} else {
 		// todo: 没有设置字符集

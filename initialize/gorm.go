@@ -22,7 +22,7 @@ func Gorm() *gorm.DB {
 func RegisterTables() {
 	db := global.GVA_DB
 	err := db.AutoMigrate(
-		entity.User{},
+		&entity.User{},
 	)
 	if err != nil {
 		os.Exit(0)

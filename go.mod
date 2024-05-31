@@ -3,6 +3,7 @@ module gin-vue-admin-STL
 go 1.22
 
 require (
+	github.com/fvbock/endless v0.0.0-20170109170031-447134032cb6
 	github.com/gin-gonic/gin v1.10.0
 	github.com/go-sql-driver/mysql v1.8.1
 	github.com/gofrs/uuid/v5 v5.2.0
